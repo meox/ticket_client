@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Brunch</title>
+  <link rel="stylesheet" href="/app.css">
+  <script src="/vendor.js"></script>
+  <script src="/app.js"></script>
+  <script>require('initialize');</script>
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"
+    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+    crossorigin="anonymous"></script>
+</head>
+<body>
+    <button id="get_ticket">GIVE ME TICKETs!</button>
+    <script>
+      $(document).ready(function(){
+        mychannel.push("ticket_def", {ticket_type: 3219}).receive(
+          "ok", (reply) => console.log("ticket_def: ", reply)
+        );
+      });
+
+      $("#get_ticket").click(function(){
+        mychannel.push("quid_master", {quid_master: 10200201});
+      });
+    </script>
+</body>
