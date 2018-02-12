@@ -30,9 +30,8 @@
           to: d - 10,
           n_item: 0,
           preset: "cem_landing"
-        },
-        (schema) =>
-          console.log(schema)
+        }).receive(
+          "ok", (schema) => console.dir(schema)
         );
       });
     </script>
