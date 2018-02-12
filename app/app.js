@@ -28,7 +28,8 @@ class App {
     chan.onClose(e => console.log("channel closed", e))
 
     chan.on("ticket", msg => {
-      console.log("ticket received: ", msg.data)
+      for (let i = 0; i < msg.data.length; i++)
+        console.log(msg.data[i])
     })
 
     return chan
