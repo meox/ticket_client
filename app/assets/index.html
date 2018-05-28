@@ -13,13 +13,22 @@
 </head>
 <body>
     <button id="get_ticket">GIVE ME TICKETs!</button>
+    <button id="btn_stop">STOP</button>
     <script>
+      var job_id = null;
+
       $(document).ready(function(){
         mychannel.push("ticket_def", {ticket_type: 3219}).receive(
           "ok", (reply) => console.log("ticket_def: ", reply)
         );
       });
 
+
+      $("#btn_stop").click(function(){
+        mychannel.push("stop_job", {
+          job_id: job_id
+        });
+      });
 
       $("#get_ticket").click(function(){
         const d = parseInt(new Date().getTime() / 1000);
@@ -29,9 +38,12 @@
           from: d - 24 * 3600,
           to: d - 10,
           n_item: 0,
-          preset: "cem_landing"
+          preset: "customer_care_v2"
         }).receive(
-          "ok", (schema) => console.dir(schema)
+          "ok", (data) => {
+            job_id = data.schema;
+            console.dir(data.schema)
+          } 
         );
       });
     </script>
