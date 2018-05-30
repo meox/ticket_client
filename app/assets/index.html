@@ -17,13 +17,6 @@
     <script>
       var job_id = null;
 
-      $(document).ready(function(){
-        mychannel.push("ticket_def", {ticket_type: 3219}).receive(
-          "ok", (reply) => console.log("ticket_def: ", reply)
-        );
-      });
-
-
       $("#btn_stop").click(function(){
         mychannel.push("stop_job", {
           job_id: job_id
@@ -34,11 +27,11 @@
         const d = parseInt(new Date().getTime() / 1000);
 
         mychannel.push("cem_fastsearch", {
-          hot_expression: "imsi == 655079926087774",
+          hot_expression: "imsi == 655079926%",
           from: d - 24 * 3600,
           to: d - 10,
           n_item: 0,
-          preset: "customer_care_v2"
+          preset: "customer_care_test"
         }).receive(
           "ok", (data) => {
             job_id = data.schema;

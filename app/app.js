@@ -4,7 +4,7 @@ class App {
 
   static init(){
     console.log("Hello");
-    let socket = new Socket("ws://127.0.0.1:4000/socket", {
+    let socket = new Socket("ws://192.168.1.250:4000/socket", {
       logger: ((kind, msg, data) => {
         if (kind !== "receive")
           console.log(`${kind}: ${msg}`, data)
