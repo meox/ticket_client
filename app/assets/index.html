@@ -20,7 +20,11 @@
       $("#btn_stop").click(function(){
         mychannel.push("stop_job", {
           job_id: job_id
-        });
+        }).receive(
+          "ok", (data) => {
+            console.dir(data)
+          } 
+        );
       });
 
       $("#get_ticket").click(function(){
@@ -31,10 +35,11 @@
           from: d - 24 * 3600,
           to: d - 10,
           n_item: 0,
-          preset: "customer_care_test"
+          resolve_enabled: true,
+          preset: "customer_care_v2"
         }).receive(
           "ok", (data) => {
-            job_id = data.schema;
+            job_id = data.job_id;
             console.dir(data.schema)
           } 
         );

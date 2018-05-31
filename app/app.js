@@ -29,13 +29,13 @@ class App {
 
     chan.on("ticket", msg => {
       console.log("recv: ", msg.data.length)
-      //for (let i = 0; i < msg.data.length; i++)
-      //  console.log(msg.data[i])
+      for (let i = 0; i < msg.data.length; i++)
+        console.log(msg.data[i])
     })
+
     chan.on("control", msg => {
         console.dir(msg)
     })
-
 
     return chan
   }
