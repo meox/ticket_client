@@ -17,7 +17,7 @@ class App {
       console.log("OPEN")
     })
 
-    socket.onError( ev => console.log("ERROR", ev) )
+    socket.onError( ev => console.log("ERROR", ev))
     socket.onClose( e => console.log("CLOSE", e))
 
     var chan = socket.channel("tickets:lobby", {})
@@ -28,8 +28,9 @@ class App {
     chan.onClose(e => console.log("channel closed", e))
 
     chan.on("ticket", msg => {
-      for (let i = 0; i < msg.data.length; i++)
-        console.log(msg.data[i])
+      console.log("recv: ", msg.data.length)
+      //for (let i = 0; i < msg.data.length; i++)
+      //  console.log(msg.data[i])
     })
     chan.on("control", msg => {
         console.dir(msg)
